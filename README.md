@@ -2,6 +2,7 @@
 
 ## Autor
 JACOBO HENRIQUEZ
+Repositorio: https://github.com/Jacobo27/taller-cafe.git
 
 ## Descripción del Proyecto
 Este proyecto es un avance de una tienda en línea de café artesanal colombiano desarrollada con tecnologías modernas. La aplicación permite visualizar productos destacados y cuenta con la funcionalidad básica de un carrito de compras.
@@ -103,9 +104,3 @@ npx ts-node index.ts
 
 ## Notas de Desarrollo
 Este es un avance inicial que se centra en la estructura frontend y la experiencia de usuario. Se han implementado las bases necesarias para continuar con el desarrollo completo de la aplicación.
-
-## Contacto
-- GitHub: [@Jacobo27](https://github.com/Jacobo27)
-
-## Licencia
-Este proyecto está bajo la Licencia MIT.
