@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tienda de Café Artesanal - Avance de Proyecto
 
-## Getting Started
+## Autor
+JACOBO HENRIQUEZ
 
-First, run the development server:
+## Descripción del Proyecto
+Este proyecto es un avance de una tienda en línea de café artesanal colombiano desarrollada con tecnologías modernas. La aplicación permite visualizar productos destacados y cuenta con la funcionalidad básica de un carrito de compras.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tecnologías Utilizadas
+- **Frontend**:
+  - Next.js 15
+  - TypeScript
+  - Tailwind CSS
+  - Context API para manejo de estado
+
+- **Backend**:
+  - Express.js
+  - Node.js
+  - TypeScript
+
+## Estructura del Proyecto
+```
+taller-cafe/
+├── app/
+│   ├── components/
+│   │   ├── CoffeeCard.tsx    # Componente de tarjeta de producto
+│   │   └── Header.tsx        # Barra de navegación
+│   ├── context/
+│   │   └── CartContext.tsx   # Contexto para el carrito de compras
+│   ├── types/
+│   │   └── index.ts         # Interfaces y tipos TypeScript
+│   ├── layout.tsx           # Layout principal de la aplicación
+│   └── page.tsx            # Página principal
+├── public/
+│   └── images/            # Imágenes de productos
+├── server/
+│   └── index.ts          # Servidor Express
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionalidades Implementadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Visualización de Productos
+- Muestra de productos destacados en la página principal
+- Imágenes optimizadas con Next.js Image
+- Información detallada de cada producto:
+  - Nombre del café
+  - Descripción
+  - Precio en COP (Pesos Colombianos)
+  - Categoría
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Carrito de Compras
+- Implementación del contexto del carrito
+- Funciones para:
+  - Agregar productos
+  - Remover productos
+  - Actualizar cantidades
+  - Calcular total
 
-## Learn More
+### 3. Diseño Responsivo
+- Interfaz adaptable a diferentes dispositivos
+- Estilos con Tailwind CSS
+- Animaciones y transiciones suaves
 
-To learn more about Next.js, take a look at the following resources:
+## Backend (En Desarrollo)
+- Servidor Express básico configurado
+- Endpoints iniciales para:
+  - Listar productos
+  - Obtener producto por ID
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Instrucciones de Instalación
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/Jacobo27/taller-cafe.git
+```
 
-## Deploy on Vercel
+2. Instalar dependencias:
+```bash
+cd taller-cafe
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Iniciar el servidor de desarrollo:
+```bash
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Para el servidor backend (en otra terminal):
+```bash
+cd server
+npx ts-node index.ts
+```
+
+## Próximas Implementaciones
+- [ ] Integración completa del backend
+- [ ] Página de catálogo completo
+- [ ] Filtros por categoría de café
+- [ ] Sistema de autenticación
+- [ ] Proceso de checkout
+- [ ] Base de datos para productos
+- [ ] Panel de administración
+
+## Notas de Desarrollo
+Este es un avance inicial que se centra en la estructura frontend y la experiencia de usuario. Se han implementado las bases necesarias para continuar con el desarrollo completo de la aplicación.
+
+## Contacto
+- GitHub: [@Jacobo27](https://github.com/Jacobo27)
+
+## Licencia
+Este proyecto está bajo la Licencia MIT.
