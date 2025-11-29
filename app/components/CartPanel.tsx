@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 
 export default function CartPanel({ onClose }: { onClose?: () => void }) {
-  const { cart, updateQuantity, removeFromCart } = useCart();
+  const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [orderResult, setOrderResult] = useState<any | null>(null);
 
@@ -25,6 +25,8 @@ export default function CartPanel({ onClose }: { onClose?: () => void }) {
       if (!res.ok) throw new Error('order failed');
       const data = await res.json();
       setOrderResult(data);
+      // clear cart after simulated order
+      clearCart();
     } catch (err) {
       setOrderResult({ error: true, message: (err as Error).message });
     } finally {
