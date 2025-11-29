@@ -8,6 +8,7 @@ interface CartContextType {
   addToCart: (coffee: Coffee) => void;
   removeFromCart: (coffeeId: string) => void;
   updateQuantity: (coffeeId: string, quantity: number) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -15,7 +16,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 type CartAction =
   | { type: 'ADD_TO_CART'; payload: Coffee }
   | { type: 'REMOVE_FROM_CART'; payload: string }
-  | { type: 'UPDATE_QUANTITY'; payload: { coffeeId: string; quantity: number } };
+  | { type: 'UPDATE_QUANTITY'; payload: { coffeeId: string; quantity: number } }
+  | { type: 'CLEAR_CART' };
 
 const initialState: Cart = {
   items: [],
@@ -85,6 +87,9 @@ function cartReducer(state: Cart, action: CartAction): Cart {
         total: state.total + (item.coffee.price * quantityDiff),
       };
     }
+    case 'CLEAR_CART': {
+      return initialState;
+    }
 
     default:
       return state;
@@ -106,8 +111,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'UPDATE_QUANTITY', payload: { coffeeId, quantity } });
   };
 
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}>
       {children}
     </CartContext.Provider>
   );

@@ -68,3 +68,26 @@ app.post('/api/orders', (req, res) => {
   // No BD: devolvemos un pedido simulado
   res.status(201).json(order);
 });
+
+// Simulate creating an order (no database)
+app.post('/api/orders', (req, res) => {
+  const { items, total } = req.body;
+  if (!items || !Array.isArray(items)) {
+    return res.status(400).json({ message: 'Invalid order payload' });
+  }
+
+  // Create a fake order id and status
+  const orderId = `ORD-${Date.now()}`;
+  const order = {
+    id: orderId,
+    items,
+    total,
+    status: 'pending',
+    createdAt: new Date().toISOString(),
+  };
+
+  // Log the order in server console (simulated)
+  console.log('Order created (simulated):', order);
+
+  res.status(201).json({ orderId, status: order.status });
+});

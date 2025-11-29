@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "./context/CartContext";
+import Header from './components/Header';
 
 const geist = Geist({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="es">
       <body suppressHydrationWarning className={`${geist.className} antialiased bg-green-100`}>
         <CartProvider>
+          <Header />
           {children}
         </CartProvider>
       </body>
