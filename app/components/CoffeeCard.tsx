@@ -18,7 +18,7 @@ export default function CoffeeCard({ id, name, price, description, image, catego
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
+      <div className="relative w-full h-48 bg-white overflow-hidden">
         {!imgError && image ? (
           <img
             src={image}
@@ -28,7 +28,7 @@ export default function CoffeeCard({ id, name, price, description, image, catego
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-50">
+          <div className="w-full h-full flex items-center justify-center text-black bg-white">
             <span className="text-3xl font-bold">☕</span>
           </div>
         )}

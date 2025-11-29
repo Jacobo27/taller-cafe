@@ -45,3 +45,26 @@ app.get('/api/coffees/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+
+// Simular la creación de un pedido (sin BD)
+app.post('/api/orders', (req, res) => {
+  const { items, customer } = req.body as { items: any[]; customer?: any };
+  if (!items || !Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({ message: 'No items provided' });
+  }
+
+  const total = items.reduce((acc, it) => acc + (it.coffee?.price ?? it.price ?? 0) * (it.quantity ?? 1), 0);
+  const orderId = `ORD-${Date.now()}`;
+
+  const order = {
+    id: orderId,
+    items,
+    total,
+    status: 'confirmed',
+    createdAt: new Date().toISOString(),
+    customer: customer ?? null,
+  };
+
+  // No BD: devolvemos un pedido simulado
+  res.status(201).json(order);
+});
