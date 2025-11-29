@@ -15,7 +15,7 @@ const coffees = [
     name: 'Café Orgánico de Nariño',
     price: 35000,
     description: 'Notas a chocolate y frutos rojos, cultivado a 2000m sobre el nivel del mar',
-    image: '/images/cafe-narino.jpg',
+    image: '/images/cafe-frutos-rojos.jpg',
     category: 'especial'
   },
   {
@@ -23,7 +23,7 @@ const coffees = [
     name: 'Café del Huila',
     price: 28000,
     description: 'Sabor balanceado con notas cítricas, cultivado por familias cafeteras',
-    image: '/images/cafe-huila.jpg',
+    image: '/images/cafe-del-huila.jpg',
     category: 'grano'
   }
 ];

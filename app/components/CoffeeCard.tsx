@@ -1,13 +1,16 @@
-'use client';
+ 'use client';
 
-import Image from 'next/image';
+import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Coffee } from '../types';
 
-interface CoffeeCardProps extends Coffee {}
+interface CoffeeCardProps extends Coffee {
+  formattedPrice?: string;
+}
 
-export default function CoffeeCard({ id, name, price, description, image, category }: CoffeeCardProps) {
+export default function CoffeeCard({ id, name, price, description, image, category, formattedPrice }: CoffeeCardProps) {
   const { addToCart } = useCart();
+  const [imgError, setImgError] = useState(false);
 
   const handleAddToCart = () => {
     addToCart({ id, name, price, description, image, category });
@@ -15,25 +18,30 @@ export default function CoffeeCard({ id, name, price, description, image, catego
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="relative w-full h-48">
-        <Image 
-          src={image} 
-          alt={name} 
-          fill
-          style={{ objectFit: 'cover' }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority
-        />
+      <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
+        {!imgError && image ? (
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+            onError={() => setImgError(true)}
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-50">
+            <span className="text-3xl font-bold">☕</span>
+          </div>
+        )}
       </div>
       <div className="p-4">
-        <h3 className="text-xl font-semibold text-brown-900">{name}</h3>
-        <p className="text-gray-600 mt-2">{description}</p>
-        <p className="text-brown-800 font-bold mt-2">
-          ${price.toLocaleString('es-CO')} COP
+        <h3 className="text-xl font-semibold text-black">{name}</h3>
+        <p className="text-black mt-2">{description}</p>
+        <p className="text-black font-bold mt-2">
+          {formattedPrice ?? `$${price.toLocaleString('es-CO')} COP`}
         </p>
         <button 
           onClick={handleAddToCart}
-          className="mt-4 bg-brown-600 text-white px-4 py-2 rounded hover:bg-brown-700 w-full transition duration-200"
+          className="mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 w-full transition duration-200"
         >
           Agregar al carrito
         </button>

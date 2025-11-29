@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${geist.variable} antialiased bg-brown-50`}>
+      <body suppressHydrationWarning className={`${geist.className} antialiased bg-green-100`}>
         <CartProvider>
           {children}
         </CartProvider>

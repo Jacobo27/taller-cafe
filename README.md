@@ -93,6 +93,26 @@ cd server
 npx ts-node index.ts
 ```
 
+Cómo ejecutar en desarrollo:
+
+1. Instalar dependencias
+
+```powershell
+npm install
+```
+
+2. Ejecutar frontend y backend en paralelo (dev)
+
+```powershell
+npm run dev:all
+```
+
+Esto ejecuta Next.js (puerto 3000) y el backend Express (puerto 3001).
+
+Notas:
+- El backend es simple y no utiliza base de datos. Los datos de ejemplo están en `server/index.ts`.
+- Si las imágenes remotas no cargan, `CoffeeCard` mostrará un placeholder en su lugar.
+
 ## Próximas Implementaciones
 - [ ] Integración completa del backend
 - [ ] Página de catálogo completo
